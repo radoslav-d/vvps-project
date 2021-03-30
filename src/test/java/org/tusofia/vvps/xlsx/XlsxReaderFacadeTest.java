@@ -96,7 +96,7 @@ public class XlsxReaderFacadeTest {
     }
 
     @Test
-    public void load_Should_Read_Content_From_File_And_Provide_Valid_EventLogs_EvenName() {
+    public void load_Should_Read_Content_From_File_And_Provide_Valid_EventLogs_EventName() {
         try (XlsxReaderFacade reader = new XlsxReaderFacade(RESOURCES_PATH + "test-event-logs.xlsx")) {
             Set<EventLog> eventLogs = reader.load();
             List<String> eventNames = eventLogs.stream()
