@@ -6,5 +6,6 @@ target/
 
 .DS_Store
 
-# Opened xlsx
+# Opened xlsx and docx
 **/~*.xlsx
+**/~*.docx

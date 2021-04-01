@@ -3,6 +3,7 @@
 xlsx_file="${1}"
 expected_average="${2}"
 expected_standard_deviation="${3}"
+expected_variance="${4}"
 
 if [ ! -f "${xlsx_file}" ]; then
     echo "${xlsx_file} does not exist."
@@ -29,9 +30,16 @@ if [[ $? -ne 0 ]] ; then
   exit 1
 fi
 
+cat results.tmp | grep "Variance" | grep "${expected_variance}"
+if [[ $? -ne 0 ]] ; then
+  echo "Variance value differs from expected!";
+  rm results.tmp
+  exit 1
+fi
+
 cat results.tmp | grep "Standard deviation" | grep "${expected_standard_deviation}"
 if [[ $? -ne 0 ]] ; then
-  echo "Average value differs from expected!";
+  echo "Standard deviation value differs from expected!";
   rm results.tmp
   exit 1
 fi
